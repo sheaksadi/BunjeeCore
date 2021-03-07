@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BunjeeCore:jar">
+    <output-path>E:/bunjee/0_bunjee/plugins</output-path>
+    <root id="archive" name="BunjeeCore.jar">
+      <element id="module-output" name="BunjeeCore" />
+      <element id="extracted-dir" path="E:/bunjee/0_bunjee/BungeeCord.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
