@@ -20,11 +20,18 @@ public class LobbyCommand extends Command {
             return;
         }
 
+
         ProxiedPlayer player =(ProxiedPlayer)commandSender;
-
         ServerInfo target= ProxyServer.getInstance().getServerInfo("lobby");
-        player.connect(target);
 
+
+        if(player.getServer().getInfo().getName().equals(target.getName())){
+            player.sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &bYou are already on lobby")));
+
+            return;
+        }
+
+        player.connect(target);
         player.sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &bYou have been teleported to the Lobby")));
 
     }
