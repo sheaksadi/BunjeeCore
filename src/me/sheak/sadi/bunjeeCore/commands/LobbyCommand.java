@@ -26,7 +26,7 @@ public class LobbyCommand extends Command {
 
 
         if(player.getServer().getInfo().getName().equals(target.getName())){
-            player.sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &bYou are already on lobby")));
+            player.sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &bYou are already in the lobby")));
 
             return;
         }
