@@ -38,7 +38,7 @@ public class OnKick implements Listener {
 
 
        }else{
-                e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &bYou have been kicked reason:"+reason)));
+                e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &b"+reason)));
 
        }
 
