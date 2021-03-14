@@ -10,45 +10,25 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
 
-
 public class OnKick implements Listener {
-   @EventHandler
-    public void onkick(ServerKickEvent e){
-       String reason= BaseComponent.toLegacyText(e.getKickReasonComponent());
-
-           // e.getPlayer().sendMessage(new TextComponent("Reason: "+reason));
-
-
-
-
-
-           e.setCancelled(true);
-
-
-
-
-       if (reason.contains("banned")){
-
-
-           ServerInfo target= ProxyServer.getInstance().getServerInfo("anarchy");
-           e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &bYou have been teleported to anarchy server for violeting rules")));
-
-
-           e.getPlayer().connect(target);
-
-
-       }else{
-                e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &b"+reason)));
-
-       }
-
-
-
-
-
-   }
-    public String format (String massage){
-        return ChatColor.translateAlternateColorCodes('&',massage);
+    @EventHandler
+    public void onkick(ServerKickEvent e) {
+        String reason = BaseComponent.toLegacyText(e.getKickReasonComponent());
+        reason = reason.replace("\n", "");
+        e.setCancelled(true);
+        if (reason.contains("cheat") || reason.contains("banned")) {
+            ServerInfo target = ProxyServer.getInstance().getServerInfo("anarchy");
+            e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] " + reason)));
+            e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] &a Enjoy your stay on our anarchy server ;)")));
+            e.getPlayer().connect(target);
+        } else {
+            ServerInfo target = ProxyServer.getInstance().getServerInfo("lobby");
+            e.getPlayer().sendMessage(new TextComponent(format("&c[&adeadhorse&e*network&c] " + reason)));
+            e.getPlayer().connect(target);
+        }
     }
 
+    public String format(String massage) {
+        return ChatColor.translateAlternateColorCodes('&', massage);
+    }
 }
